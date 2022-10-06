@@ -1,58 +1,57 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
+
+// functions
+
+func sumVar(nums ...int) int {
+	total := 0
+	for n := range nums {
+		total += n
+	}
+	return total
+}
+
+func add(a int, b int) int {
+	return a + b
+}
+
+func addAll(a, b, c int) int {
+	return a + b + c
+}
+
+func multiAdd(a, b string) (string, string) {
+	front := a + b
+	rev := b + a
+	return front, rev
+}
 
 func main() {
 
-	arr := [6]int{1, 3, 5, 6, 7, 8}
+	nums := []int{1, 2, 3, 4}
+	var sumAllNum = sumVar(nums...)
+	fmt.Println(" Sum is========================== ", sumAllNum)
 
-	for v := 0; v < len(arr); v++ {
-		if v%2 == 0 {
-			fmt.Println("--> ", arr[v], " index is ", v)
-		}
+	a, b := multiAdd("akhil", "gupta")
+	fmt.Println("front ", a)
+	fmt.Println("reverse ", b)
+
+	add := add(3, 4)
+	fmt.Println("sum is", add)
+
+	addAll := addAll(3, 4, 9)
+	fmt.Println("sum All  is", addAll)
+
+	m := make(map[string]int)
+	m["akkhil"] = 1
+	m["gupta"] = 2
+	fmt.Println(">>>", m)
+	n := map[string]int{"india": 1, "hyd": 2}
+	fmt.Println("modified map ", n)
+
+	// range is used as iterator
+	for k, v := range n {
+		fmt.Println("%s -> %d\n", k, v)
 	}
 
-	if num := 10; num < 0 {
-		fmt.Println("its negative..")
-	} else if num < 10 {
-		fmt.Println("its one digit ..")
-	} else {
-		fmt.Println("has  multiple....")
-	}
-
-	for i := 1; i < 5; i++ {
-		fmt.Println("i: ", i)
-	}
-
-	j := 1
-	for j <= 3 {
-		fmt.Println("j: ", j)
-		j = j + 1
-	}
-
-	for {
-		fmt.Println("loop ")
-		break
-	}
-
-	var score int = 100
-
-	marks := 33
-
-	var c, d int = 3, 4
-
-	const limit = 222
-
-	fmt.Println("constant is ", int64(limit))
-	fmt.Println("score is ", score)
-	fmt.Println("marks  is ", marks)
-
-	fmt.Println("c  is ", c)
-	fmt.Println("d  is ", d)
-	fmt.Println("test Class")
-	fmt.Println("1+1 is ", 1+1)
-	fmt.Println("OR is ", false || true)
-	fmt.Println("AND is ", false && true)
 }
